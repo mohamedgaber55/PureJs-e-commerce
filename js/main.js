@@ -26,7 +26,7 @@ function updateUI(){
         searcContainer.style.display =  'block';
 
         username.innerHTML = localStorage.getItem('userName');
-        uesrImg.src = userLocalImg ? userLocalImg : '../imgs/user.png';
+        uesrImg.src = userLocalImg ? userLocalImg : 'imgs/user.png';
     }
     else{
         // no user
