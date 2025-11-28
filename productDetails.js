@@ -7,15 +7,6 @@ const username = document.querySelector('.username');
 // main products 
 const theProducts = JSON.parse(localStorage.getItem('products')) || products;
 
-// check if localStorage contain a user or no 
-    if(localStorage.getItem('userName')){
-        unregistered.style.display =  'none';
-        username.innerHTML = localStorage.getItem('userName');
-    }
-    else{
-        registered.style.display =  'none';
-    }
-
 // get clicked product by id after stored it in localStorage
 const productId = localStorage.getItem('productId');
 

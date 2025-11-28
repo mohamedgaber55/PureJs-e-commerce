@@ -26,7 +26,7 @@ function updateUI(){
         searcContainer.style.display =  'block';
 
         username.innerHTML = localStorage.getItem('userName');
-        uesrImg.src = userLocalImg ? userLocalImg : '/imgs/user.png';
+        uesrImg.src = userLocalImg ? userLocalImg : '../imgs/user.png';
     }
     else{
         // no user
@@ -42,15 +42,15 @@ updateUI();
 
 // handle user profile path
 let uesrInfo = document.querySelector('.user-info');
-uesrInfo.onclick = () => window.location.pathname = '/pages/Auth/profile.html'
+uesrInfo.onclick = () => window.location.pathname = '../pages/Auth/profile.html'
 
 
 // handle logout
 logout.addEventListener('click', function() {
 
     localStorage.clear();
-    unregistered.style.display =  'block';
-    registered.style.display =  'none';
+    unregistered.style.display = 'block';
+    registered.style.display = 'none';
     updateUI();
 
 });
@@ -99,7 +99,7 @@ productsMap(theProducts);
 // function for single product details
 function singleProductDetails(id){
     localStorage.setItem('productId', id)
-    window.location.pathname = `/pages/Website/productDetails.html`
+    window.location.pathname = `../productDetails.html`
 }
 
 // get the div that contain cart products & badge & cart icon
@@ -107,24 +107,22 @@ const mainCart = document.querySelector('.cart-items');
 const badge = document.querySelector('.head-cart span');
 const cartIcon = document.querySelector('.head-cart .fa-cart-shopping');
 const cartDropdown = document.querySelector('.cart-dropdown');
+const cartDropClose = document.querySelector('.cart-dropdown .close');
 
 // handle cart display 
 cartIcon.onclick = () => {
     const cartInner = localStorage.getItem('cart');
 
-    if(cartInner){
-        if(JSON.parse(cartInner).length > 0){
-            if(cartDropdown.style.opacity == '1'){
-                cartDropdown.style.opacity = '0';
-            }else{
-                cartDropdown.style.opacity = '1';
-            }
-        }else{
-            cartDropdown.style.opacity = '0';
-        }
+    if (cartInner && JSON.parse(cartInner).length > 0) {
+        cartDropdown.classList.toggle('show');
+    } else {
+        cartDropdown.classList.remove('show');
     }
-
+};
+cartDropClose.onclick = () => {
+    cartDropdown.classList.remove('show');
 }
+
 
 // check if cart in localStorage contain products or not & declare cartArray to locate products on.
 const getLocalCartProducts = localStorage.getItem('cart');
